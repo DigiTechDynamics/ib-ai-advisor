@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, ReactNode } from "react";
 import { useRouter } from "next/navigation";
 
 interface Account {
@@ -79,6 +79,45 @@ interface ComprehensiveAdvice {
   risk_profile: string;
 }
 
+// --- SVG Icons ---
+const Icon = ({ children, size = 20, color = "currentColor", className = "" }: { children: ReactNode, size?: number, color?: string, className?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    {children}
+  </svg>
+);
+
+const IconBank = (props: any) => <Icon {...props}><path d="M3 21h18" /><path d="M3 10h18" /><path d="M5 6l7-3 7 3" /><path d="M4 10v11" /><path d="M20 10v11" /><path d="M8 14v3" /><path d="M12 14v3" /><path d="M16 14v3" /></Icon>;
+const IconHome = (props: any) => <Icon {...props}><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></Icon>;
+const IconAdvisor = (props: any) => <Icon {...props}><path d="M12 8V4H8" /><rect width="16" height="12" x="4" y="8" rx="2" /><path d="M2 14h2" /><path d="M20 14h2" /><path d="M15 13v2" /><path d="M9 13v2" /></Icon>;
+const IconTransfer = (props: any) => <Icon {...props}><path d="m3 16 4 4 4-4" /><path d="M7 20V4" /><path d="m21 8-4-4-4 4" /><path d="M17 4v16" /></Icon>;
+const IconHistory = (props: any) => <Icon {...props}><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /><path d="M12 7v5l4 2" /></Icon>;
+const IconBulk = (props: any) => <Icon {...props}><rect width="7" height="7" x="3" y="3" rx="1" /><rect width="7" height="7" x="14" y="3" rx="1" /><rect width="7" height="7" x="14" y="14" rx="1" /><rect width="7" height="7" x="3" y="14" rx="1" /></Icon>;
+const IconBill = (props: any) => <Icon {...props}><rect width="18" height="18" x="3" y="3" rx="2" /><line x1="3" x2="21" y1="9" y2="9" /><line x1="9" x2="9" y1="21" y2="9" /></Icon>;
+const IconAirtime = (props: any) => <Icon {...props}><rect width="14" height="20" x="5" y="2" rx="2" /><path d="M12 18h.01" /></Icon>;
+const IconUsers = (props: any) => <Icon {...props}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></Icon>;
+const IconSettings = (props: any) => <Icon {...props}><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" /><circle cx="12" cy="12" r="3" /></Icon>;
+const IconLogout = (props: any) => <Icon {...props}><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" x2="9" y1="12" y2="12" /></Icon>;
+const IconSun = (props: any) => <Icon {...props}><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></Icon>;
+const IconMoon = (props: any) => <Icon {...props}><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></Icon>;
+const IconAlert = (props: any) => <Icon {...props}><circle cx="12" cy="12" r="10" /><line x1="12" x2="12" y1="8" y2="12" /><line x1="12" x2="12.01" y1="16" y2="16" /></Icon>;
+const IconRefresh = (props: any) => <Icon {...props}><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /><path d="M21 3v5h-5" /><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /><path d="M3 21v-5h5" /></Icon>;
+const IconChevronDown = (props: any) => <Icon {...props}><polyline points="6 9 12 15 18 9" /></Icon>;
+const IconChevronUp = (props: any) => <Icon {...props}><polyline points="18 15 12 9 6 15" /></Icon>;
+const IconDownload = (props: any) => <Icon {...props}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></Icon>;
+const IconTrendingUp = (props: any) => <Icon {...props}><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" /></Icon>;
+const IconTrendingDown = (props: any) => <Icon {...props}><polyline points="23 18 13.5 8.5 8.5 13.5 1 6" /><polyline points="17 18 23 18 23 12" /></Icon>;
+const IconScan = (props: any) => <Icon {...props}><path d="M3 7V5a2 2 0 0 1 2-2h2" /><path d="M17 3h2a2 2 0 0 1 2 2v2" /><path d="M21 17v2a2 2 0 0 1-2 2h-2" /><path d="M7 21H5a2 2 0 0 1-2-2v-2" /><line x1="7" x2="17" y1="12" y2="12" /></Icon>;
+const IconSparkles = (props: any) => <Icon {...props}><path d="m12 3 1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275L12 3Z" /></Icon>;
+const IconTrash = (props: any) => <Icon {...props}><path d="M3 6h18" /><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" /><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" /><line x1="10" x2="10" y1="11" y2="17" /><line x1="14" x2="14" y1="11" y2="17" /></Icon>;
+const IconPlus = (props: any) => <Icon {...props}><path d="M5 12h14" /><path d="M12 5v14" /></Icon>;
+const IconImport = (props: any) => <Icon {...props}><path d="M4 14.89V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2.11" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></Icon>;
+const IconLoader = (props: any) => <Icon {...props} className="animate-spin"><path d="M21 12a9 9 0 1 1-6.21-8.58" /></Icon>;
+const IconUser = (props: any) => <Icon {...props}><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></Icon>;
+const IconCheckCircle = (props: any) => <Icon {...props}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></Icon>;
+const IconGlobe = (props: any) => <Icon {...props}><circle cx="12" cy="12" r="10" /><line x1="2" x2="22" y1="12" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></Icon>;
+const IconShield = (props: any) => <Icon {...props}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></Icon>;
+const IconZap = (props: any) => <Icon {...props}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></Icon>;
+
 export default function DashboardPage() {
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [insight, setInsight] = useState<AIInsight | null>(null);
@@ -86,7 +125,17 @@ export default function DashboardPage() {
   const [name, setName] = useState("");
   const [activeTab, setActiveTab] = useState("Home");
   const [spendingInsights, setSpendingInsights] = useState<SpendingInsights | null>(null);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") === "dark";
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
+
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [receipt, setReceipt] = useState<Receipt | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -257,6 +306,10 @@ export default function DashboardPage() {
     setName(userName || "");
     fetchAllData(userId);
   }, [router, fetchAllData]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
 
   const fetchComprehensiveAdvice = async (userId: string) => {
     try {
@@ -567,7 +620,7 @@ export default function DashboardPage() {
   };
 
   return (
-    <div data-theme={darkMode ? "dark" : "light"} className="dashboard-layout">
+    <div className="dashboard-layout">
       {/* Toast Notifications */}
       <div style={{ position:"fixed", bottom:"1.5rem", right:"1.5rem", zIndex:9999, display:"flex", flexDirection:"column", gap:"0.75rem" }}>
         {toasts.map(t => (
@@ -612,7 +665,7 @@ export default function DashboardPage() {
       {showConfirmModal && (
         <div className="modal-overlay" onClick={() => setShowConfirmModal(false)}>
           <div className="modal-content animate-up" style={{width:"min(540px,90vw)"}} onClick={e => e.stopPropagation()}>
-            <h2 className="brand-font" style={{margin:"0 0 0.5rem",color:"var(--primary)",fontSize:"1.3rem"}}>⚠️ Confirm Bulk Payment</h2>
+            <h2 className="brand-font" style={{margin:"0 0 0.5rem",color:"var(--primary)",fontSize:"1.3rem", display:"flex", alignItems:"center", gap:"var(--space-xs)"}}><IconSparkles size={20} /> Confirm Bulk Payment</h2>
             <p style={{color:"var(--text-muted)",fontSize:"0.9rem",marginBottom:"1.25rem"}}>Please review the payment details before authorising.</p>
             <div style={{background:"var(--bg-color)",borderRadius:"16px",padding:"1.5rem",marginBottom:"1.25rem",fontSize:"0.9rem", border:"1px solid var(--border-color)"}}>
               <div className="flex justify-between mb-2"><span>Recipients</span><strong>{bulkRows.length}</strong></div>
@@ -636,22 +689,24 @@ export default function DashboardPage() {
       {/* Sidebar */}
       <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
         <div className="sidebar-logo brand-font">
-          <span style={{background:"var(--primary)", color:"white", padding:"0.4rem", borderRadius:"12px", fontSize:"1.2rem"}}>🏦</span>
+          <div style={{background:"var(--primary)", color:"white", padding:"var(--space-2xs)", borderRadius:"var(--radius-md)", display:"flex", alignItems:"center", justifyContent:"center"}}>
+            <IconBank size={24} color="white" />
+          </div>
           IB Advisor
           <button onClick={() => setSidebarOpen(false)} style={{background:"none", border:"none", fontSize:"1.5rem", color:"var(--text-main)", marginLeft:"auto"}} className="mobile-only">✕</button>
         </div>
         <nav className="sidebar-nav">
           <button className={`nav-item ${activeTab === "Home" ? "active" : ""}`} onClick={() => { setActiveTab("Home"); setSidebarOpen(false); }}>
-            <span>⌂ Home</span>
+            <span style={{display:"flex", alignItems:"center", gap:"var(--space-sm)"}}><IconHome size={18} /> Home</span>
           </button>
           
           <button className={`nav-item ${activeTab === "AI Advisor" ? "active" : ""}`} onClick={() => { setActiveTab("AI Advisor"); setSidebarOpen(false); }}>
-            <span>🤖 AI Advisor</span>
+            <span style={{display:"flex", alignItems:"center", gap:"var(--space-sm)"}}><IconAdvisor size={18} /> AI Advisor</span>
           </button>
           
           <button className={`nav-item ${["History", "Transfer", "Bulk Payment", "Bulk History"].includes(activeTab) ? "active" : ""}`} onClick={() => toggleNav("Transfer")}>
-            <span>⇄ Transfer</span>
-            <span>{expandedNav === "Transfer" ? "▲" : "▼"}</span>
+            <span style={{display:"flex", alignItems:"center", gap:"var(--space-sm)"}}><IconTransfer size={18} /> Transfer</span>
+            <span>{expandedNav === "Transfer" ? <IconChevronUp size={14} /> : <IconChevronDown size={14} />}</span>
           </button>
           {expandedNav === "Transfer" && (
             <div className="nav-subgroup">
@@ -663,8 +718,8 @@ export default function DashboardPage() {
           )}
 
           <button className={`nav-item ${["View Payments", "Bill Categories"].includes(activeTab) ? "active" : ""}`} onClick={() => toggleNav("Bill Payments")}>
-            <span>$ Bill Payments</span>
-            <span>{expandedNav === "Bill Payments" ? "▲" : "▼"}</span>
+            <span style={{display:"flex", alignItems:"center", gap:"var(--space-sm)"}}><IconBill size={18} /> Bill Payments</span>
+            <span>{expandedNav === "Bill Payments" ? <IconChevronUp size={14} /> : <IconChevronDown size={14} />}</span>
           </button>
           {expandedNav === "Bill Payments" && (
             <div className="nav-subgroup">
@@ -674,8 +729,8 @@ export default function DashboardPage() {
           )}
 
           <button className={`nav-item ${["Econet", "NetOne", "Telecel"].includes(activeTab) ? "active" : ""}`} onClick={() => toggleNav("Airtime")}>
-            <span>📱 Airtime</span>
-            <span>{expandedNav === "Airtime" ? "▲" : "▼"}</span>
+            <span style={{display:"flex", alignItems:"center", gap:"var(--space-sm)"}}><IconAirtime size={18} /> Airtime</span>
+            <span>{expandedNav === "Airtime" ? <IconChevronUp size={14} /> : <IconChevronDown size={14} />}</span>
           </button>
           {expandedNav === "Airtime" && (
             <div className="nav-subgroup">
@@ -686,8 +741,8 @@ export default function DashboardPage() {
           )}
 
           <button className={`nav-item ${["Add Beneficiary", "Manage Beneficiaries"].includes(activeTab) ? "active" : ""}`} onClick={() => toggleNav("Beneficiaries")}>
-            <span>👥 Beneficiaries</span>
-            <span>{expandedNav === "Beneficiaries" ? "▲" : "▼"}</span>
+            <span style={{display:"flex", alignItems:"center", gap:"var(--space-sm)"}}><IconUsers size={18} /> Beneficiaries</span>
+            <span>{expandedNav === "Beneficiaries" ? <IconChevronUp size={14} /> : <IconChevronDown size={14} />}</span>
           </button>
           {expandedNav === "Beneficiaries" && (
             <div className="nav-subgroup">
@@ -697,12 +752,12 @@ export default function DashboardPage() {
           )}
 
           <button className={`nav-item ${activeTab === "Manage" ? "active" : ""}`} onClick={() => { setActiveTab("Manage"); setSidebarOpen(false); }}>
-            <span>⚙ Security</span>
+            <span style={{display:"flex", alignItems:"center", gap:"var(--space-sm)"}}><IconSettings size={18} /> Security</span>
           </button>
         </nav>
         <div style={{padding: "1.5rem"}}>
-          <button className="nav-item" onClick={handleLogout} style={{color: "var(--error)"}}>
-            ↳ Log Out
+          <button className="nav-item" onClick={handleLogout} style={{color: "var(--error)", display:"flex", alignItems:"center", gap:"var(--space-sm)"}}>
+            <IconLogout size={18} color="var(--error)" /> Log Out
           </button>
         </div>
       </aside>
@@ -716,21 +771,21 @@ export default function DashboardPage() {
               Welcome, <strong>{name}</strong>
             </div>
           </div>
-          <div className="theme-toggle" onClick={() => setDarkMode(!darkMode)} style={{ background: "var(--card-bg)", border: "1px solid var(--border-color)", cursor: "pointer", padding: "0.5rem 1rem", borderRadius: "100px", display: "flex", alignItems: "center", gap: "0.75rem", boxShadow: "var(--shadow-sm)" }}>
-            <span style={{ fontSize: "1.1rem" }}>{darkMode ? "🌙" : "☀️"}</span>
+          <div className="theme-toggle" onClick={() => setDarkMode(!darkMode)} style={{ background: "var(--card-bg)", border: "1px solid var(--border-color)", cursor: "pointer", padding: "var(--space-xs) var(--space-md)", borderRadius: "100px", display: "flex", alignItems: "center", gap: "var(--space-sm)", boxShadow: "var(--shadow-sm)" }}>
+            {darkMode ? <IconMoon size={18} color="var(--primary)" /> : <IconSun size={18} color="#f59e0b" />}
             <span style={{fontSize:"0.85rem", fontWeight:700, color:"var(--text-muted)"}}>{darkMode ? "DARK" : "LIGHT"}</span>
           </div>
         </div>
 
         {apiError && (
           <div style={{
-            background: "#fee2e2", border: "1px solid #f87171", color: "#991b1b",
-            padding: "1rem 1.5rem", borderRadius: "12px", marginBottom: "2rem",
+            background: "rgba(239, 68, 68, 0.1)", border: "1px solid var(--error)", color: "var(--error)",
+            padding: "var(--space-md) var(--space-lg)", borderRadius: "var(--radius-md)", marginBottom: "var(--space-xl)",
             display: "flex", justifyContent: "space-between", alignItems: "center",
             boxShadow: "var(--shadow-sm)", animation: "slideInDown 0.3s ease"
           }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-              <span style={{ fontSize: "1.2rem" }}>🚨</span>
+            <div style={{ display: "flex", alignItems: "center", gap: "var(--space-sm)" }}>
+              <IconAlert size={20} color="var(--error)" />
               <div>
                 <strong style={{ display: "block", fontSize: "0.95rem" }}>Connection Error</strong>
                 <span style={{ fontSize: "0.85rem", opacity: 0.8 }}>{apiError}</span>
@@ -739,44 +794,55 @@ export default function DashboardPage() {
             <button 
               onClick={() => { const uid = localStorage.getItem("user_id"); if (uid) fetchAllData(uid); }}
               className="btn-premium"
-              style={{ padding: "0.5rem 1rem", fontSize: "0.8rem", background: "#991b1b" }}
+              style={{ padding: "var(--space-xs) var(--space-md)", fontSize: "0.8rem", background: "var(--error)", display: "flex", alignItems: "center", gap: "var(--space-xs)" }}
             >
-              🔄 Retry Connection
+              <IconRefresh size={14} color="white" /> Retry Connection
             </button>
           </div>
         )}
 
         <div className="dashboard-grid">
-          <div className="dashboard-left">
+          <div className="dashboard-left flex flex-col gap-6">
             {activeTab === "Home" && (
               <>
                 <h2 className="section-title">Accounts Overview</h2>
                 <div className="accounts-row">
                   {accounts.map(acc => (
                     <div key={acc.id} className="account-card" style={{animation:"slideInUp 0.3s ease"}}>
-                      <div style={{display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:"1.5rem"}}>
+                      <div style={{display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:"var(--space-lg)"}}>
                         <div style={{fontSize:"1.2rem", fontWeight:800}}>{acc.account_type}</div>
-                        <span style={{fontSize:"1.5rem"}}>{acc.currency === "USD" ? "🇺🇸" : "🇿🇼"}</span>
+                        <div style={{width:"24px", height:"24px", borderRadius:"100%", overflow:"hidden", display:"flex", alignItems:"center", justifyContent:"center", background:"#f8fafc", border:"1px solid var(--border-color)"}}>
+                          {acc.currency === "USD" ? (
+                            <svg viewBox="0 0 24 24" width="16" height="16"><rect width="24" height="24" fill="#3c3b6e"/><path d="M0 0h24v1.846H0zm0 3.692h24v1.846H0zm0 3.692h24v1.847H0zm0 3.693h24v1.846H0zm0 3.692h24v1.846H0zm0 3.692h24v1.846H0zm0 3.693h24v1.846H0z" fill="#b22234"/><rect width="12" height="12.923" fill="#3c3b6e"/><circle cx="2" cy="2" r=".5" fill="#fff"/></svg>
+                          ) : (
+                            <svg viewBox="0 0 24 24" width="16" height="16"><rect width="24" height="24" fill="#006a4e"/><path d="M0 4.8h24v14.4H0z" fill="#fff"/><path d="M0 7.2h24v9.6H0z" fill="#ffd200"/><path d="M0 9.6h24v4.8H0z" fill="#ef3340"/><path d="M0 0h6l4 12-4 12H0z" fill="#fff"/></svg>
+                          )}
+                        </div>
                       </div>
-                      <div style={{fontSize:"0.85rem", opacity:0.8, marginBottom:"0.25rem"}}>Available Balance</div>
-                      <div style={{fontSize:"1.8rem", fontWeight:800, marginBottom:"1rem"}}>
+                      <div style={{fontSize:"0.85rem", opacity:0.8, marginBottom:"var(--space-xs)"}}>Available Balance</div>
+                      <div style={{fontSize:"1.8rem", fontWeight:800, marginBottom:"var(--space-md)"}}>
                         {acc.currency === "USD" ? "$" : "ZWG "}
                         {acc.balance.toLocaleString(undefined, {minimumFractionDigits: 2})}
                       </div>
-                      <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", borderTop:"1px solid rgba(255,255,255,0.2)", paddingTop:"1rem"}}>
+                      <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", borderTop:"1px solid rgba(255,255,255,0.2)", paddingTop:"var(--space-md)"}}>
                         <span style={{fontFamily:"monospace", fontSize:"0.9rem"}}>{acc.account_number}</span>
-                        <button className="btn-premium" style={{background:"rgba(255,255,255,0.2)", padding:"0.4rem 0.8rem", fontSize:"0.75rem"}} onClick={() => { setSourceAccountId(acc.id.toString()); fetchTransactions(acc.id); setActiveTab("History"); }}>Details</button>
+                        <button className="btn-premium" style={{background:"rgba(255,255,255,0.2)", padding:"var(--space-xs) var(--space-sm)", fontSize:"0.75rem"}} onClick={() => { setSourceAccountId(acc.id.toString()); fetchTransactions(acc.id); setActiveTab("History"); }}>Details</button>
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div style={{marginTop:"3rem"}}>
+                <div style={{marginTop:"var(--space-2xl)"}}>
                   <h2 className="section-title">Quick Shortcuts</h2>
-                  <div style={{display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(140px, 1fr))", gap:"1.25rem"}}>
-                    {[{icon:"⇄",label:"RTGS",tab:"Transfer", color:"#3b82f6"}, {icon:"⚡",label:"ZIPIT",tab:"Transfer", color:"#10b981"}, {icon:"📱",label:"Airtime",tab:"Econet", color:"#f59e0b"}, {icon:"📷",label:"Scan",tab:"Scan", color:"#ef4444"}].map(s => (
-                      <div key={s.label} className="card-premium" style={{textAlign:"center", cursor:"pointer", padding:"1.5rem"}} onClick={s.label==="Scan" ? handleSimulateScan : () => setActiveTab(s.tab)}>
-                        <div style={{width:"48px", height:"48px", background:s.color, color:"white", borderRadius:"12px", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 0.75rem", fontSize:"1.25rem", boxShadow:`0 8px 16px -4px ${s.color}66`}}>{s.icon}</div>
+                  <div style={{display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(140px, 1fr))", gap:"var(--space-md)"}}>
+                    {[
+                      {icon:<IconTransfer size={24} color="white" />,label:"RTGS",tab:"Transfer", color:"#3b82f6"}, 
+                      {icon:<IconSparkles size={24} color="white" />,label:"ZIPIT",tab:"Transfer", color:"#10b981"}, 
+                      {icon:<IconAirtime size={24} color="white" />,label:"Airtime",tab:"Econet", color:"#f59e0b"}, 
+                      {icon:<IconScan size={24} color="white" />,label:"Scan",tab:"Scan", color:"#ef4444"}
+                    ].map(s => (
+                      <div key={s.label} className="card-premium" style={{textAlign:"center", cursor:"pointer", padding:"var(--space-lg)"}} onClick={s.label==="Scan" ? handleSimulateScan : () => setActiveTab(s.tab)}>
+                        <div style={{width:"48px", height:"48px", background:s.color, borderRadius:"var(--radius-md)", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto var(--space-sm)", boxShadow:`0 8px 16px -4px ${s.color}66`}}>{s.icon}</div>
                         <span style={{fontWeight:700, fontSize:"0.9rem"}}>{s.label}</span>
                       </div>
                     ))}
@@ -806,19 +872,23 @@ export default function DashboardPage() {
                   <div className="animate-up">
                     {comprehensiveAdvice ? (
                       <>
-                        <div className="advisor-hero card-premium" style={{ borderLeft: "8px solid var(--primary)", marginBottom: "2rem" }}>
-                          <div className="flex gap-6 items-center mobile-stack">
-                            <div className="advisor-avatar">🤖</div>
+                        <div className="advisor-hero card-premium" style={{ borderLeft: "8px solid var(--primary)", marginBottom: "var(--space-xl)" }}>
+                          <div className="flex gap-6 items-center mobile-stack" style={{gap: "var(--space-xl)"}}>
+                            <div className="advisor-avatar" style={{display:"flex", alignItems:"center", justifyContent:"center", background:"var(--primary)", color:"white", borderRadius:"50%", width:"64px", height:"64px"}}>
+                              <IconAdvisor size={32} color="white" />
+                            </div>
                             <div style={{flex:1}}>
-                              <div className="badge badge-primary mb-3">AI ANALYSIS</div>
+                              <div className="badge badge-primary mb-3" style={{marginBottom: "var(--space-md)", display:"flex", alignItems:"center", gap:"var(--space-2xs)", width:"fit-content"}}>
+                                <IconSparkles size={12} color="white" /> AI ANALYSIS
+                              </div>
                               <h3 className="brand-font" style={{fontSize:"1.8rem", margin:0}}>Monthly Financial Health</h3>
-                              <p style={{fontSize:"1.1rem", color:"var(--text-main)", marginTop:"0.5rem", lineHeight:1.6}}>
+                              <p style={{fontSize:"1.1rem", color:"var(--text-main)", marginTop:"var(--space-sm)", lineHeight:1.6}}>
                                 Your spending this month is <strong>{comprehensiveAdvice.spending_analysis.spending_trend === "up" ? "increasing" : comprehensiveAdvice.spending_analysis.spending_trend === "down" ? "decreasing" : "stable"}</strong> compared to last month.
                                 Current savings rate: <span className="text-success" style={{fontWeight:800}}>{comprehensiveAdvice.budgeting.savings_rate}</span>
                               </p>
                             </div>
-                            <div className="spending-circular-preview">
-                               <div style={{fontSize:"2.5rem"}}>{comprehensiveAdvice.spending_analysis.spending_trend === "up" ? "📈" : "📉"}</div>
+                            <div className="spending-circular-preview" style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+                               {comprehensiveAdvice.spending_analysis.spending_trend === "up" ? <IconTrendingUp size={48} color="var(--error)" /> : <IconTrendingDown size={48} color="var(--success)" />}
                             </div>
                           </div>
                         </div>
@@ -830,7 +900,7 @@ export default function DashboardPage() {
                                <div className="flex flex-col gap-3">
                                   {comprehensiveAdvice.spending_analysis.anomalies.map((an, i) => (
                                     <div key={i} className="anomaly-item">
-                                      <span className="anomaly-icon">⚠️</span>
+                                      <IconScan size={20} color="var(--error)" />
                                       <p>{an}</p>
                                     </div>
                                   ))}
@@ -885,14 +955,14 @@ export default function DashboardPage() {
                       {comprehensiveAdvice?.investments.map((inv, i) => (
                         <div key={i} className="card-premium inv-card">
                           <div className="inv-header">
-                            <div className="inv-icon">{inv.risk === "High" || inv.risk === "Aggressive" ? "🚀" : "🛡️"}</div>
+                            <div className="inv-icon">{inv.risk === "High" || inv.risk === "Aggressive" ? <IconSparkles size={32} color="var(--accent)" /> : <IconShield size={32} color="var(--primary)" />}</div>
                             <div className="inv-yield">{inv.yield}</div>
                           </div>
-                          <h4 className="brand-font mt-4 mb-2" style={{fontSize:"1.3rem"}}>{inv.name}</h4>
+                          <h4 className="brand-font" style={{fontSize:"1.3rem", marginTop:"var(--space-md)", marginBottom:"var(--space-xs)"}}>{inv.name}</h4>
                           <p style={{color:"var(--text-muted)", fontSize:"0.9rem", lineHeight:1.6}}>{inv.description}</p>
-                          <div className="flex justify-between items-center mt-6">
+                          <div className="flex justify-between items-center" style={{marginTop:"var(--space-xl)"}}>
                              <div className="badge" style={{background:"var(--bg-color)", color:"var(--text-main)"}}>{inv.risk} Risk</div>
-                             <button className="btn-premium" style={{fontSize:"0.8rem", padding:"0.5rem 1rem"}}>Invest Now</button>
+                             <button className="btn-premium" style={{fontSize:"0.8rem", padding:"var(--space-xs) var(--space-md)"}}>Invest Now</button>
                           </div>
                         </div>
                       ))}
@@ -904,8 +974,8 @@ export default function DashboardPage() {
                   <div className="animate-up">
                     <div className="grid-1-2">
                       <div className="card-premium">
-                        <h3 className="brand-font mb-6">Wealth Projection</h3>
-                        <form onSubmit={handleRunSimulation} className="flex flex-col gap-4">
+                        <h3 className="brand-font" style={{marginBottom:"var(--space-lg)"}}>Wealth Projection</h3>
+                        <form onSubmit={handleRunSimulation} className="flex flex-col" style={{gap:"var(--space-md)"}}>
                            <div className="form-group">
                              <label className="form-label">Initial Investment ($)</label>
                              <input className="input-premium" type="number" value={simInvestment} onChange={e => setSimInvestment(e.target.value)} />
@@ -929,7 +999,7 @@ export default function DashboardPage() {
                       <div className="card-premium" style={{minHeight:"400px"}}>
                         {simulationResults ? (
                           <>
-                            <div className="flex justify-between mb-8 mobile-stack">
+                            <div className="flex justify-between mobile-stack" style={{marginBottom:"var(--space-xl)"}}>
                                <div>
                                  <div className="form-label">FINAL PROJECTED WEALTH</div>
                                  <div className="brand-font" style={{fontSize:"2.5rem", color:"var(--success)"}}>${simulationResults.final_wealth.toLocaleString()}</div>
@@ -951,14 +1021,14 @@ export default function DashboardPage() {
                                  </div>
                                ))}
                             </div>
-                            <div className="flex gap-4 mt-6 justify-center">
-                               <div className="flex items-center gap-2"><div style={{width:12, height:12, background:"var(--success)", borderRadius:3}}></div> <span style={{fontSize:"0.75rem", fontWeight:700}}>Interest</span></div>
-                               <div className="flex items-center gap-2"><div style={{width:12, height:12, background:"var(--primary)", borderRadius:3}}></div> <span style={{fontSize:"0.75rem", fontWeight:700}}>Contributions</span></div>
+                            <div className="flex justify-center" style={{gap:"var(--space-md)", marginTop:"var(--space-xl)"}}>
+                               <div className="flex items-center" style={{gap:"var(--space-xs)"}}><div style={{width:12, height:12, background:"var(--success)", borderRadius:3}}></div> <span style={{fontSize:"0.75rem", fontWeight:700}}>Interest</span></div>
+                               <div className="flex items-center" style={{gap:"var(--space-xs)"}}><div style={{width:12, height:12, background:"var(--primary)", borderRadius:3}}></div> <span style={{fontSize:"0.75rem", fontWeight:700}}>Contributions</span></div>
                             </div>
                           </>
                         ) : (
                           <div className="empty-state">
-                             <div style={{fontSize:"4rem", marginBottom:"1rem"}}>📈</div>
+                             <div style={{marginBottom:"1rem"}}><IconTrendingUp size={64} color="var(--success)" /></div>
                              <p className="brand-font" style={{fontSize:"1.2rem"}}>Wealth Projection Tool</p>
                              <p style={{marginTop:"0.5rem"}}>Adjust the parameters on the left to see your potential growth over time.</p>
                           </div>
@@ -970,12 +1040,12 @@ export default function DashboardPage() {
 
                 {advisorSubTab === "Market" && (
                   <div className="animate-up">
-                    <div className="card-premium advisor-hero mb-6" style={{background:"var(--bg-color)", border:"1px solid var(--border-color)"}}>
-                       <div className="flex gap-6 items-center mobile-stack">
-                          <div style={{fontSize:"3.5rem"}}>🌍</div>
+                    <div className="card-premium advisor-hero" style={{background:"var(--bg-color)", border:"1px solid var(--border-color)", marginBottom:"var(--space-lg)"}}>
+                       <div className="flex items-center mobile-stack" style={{gap:"var(--space-xl)"}}>
+                          <IconGlobe size={64} color="var(--primary)" />
                           <div style={{flex:1}}>
                             <h3 className="brand-font" style={{margin:0}}>Market Awareness Insights</h3>
-                            <p style={{lineHeight:1.7, color:"var(--text-main)", fontSize:"1.1rem", marginTop:"0.5rem"}}>
+                            <p style={{lineHeight:1.7, color:"var(--text-main)", fontSize:"1.1rem", marginTop:"var(--space-sm)"}}>
                               {aiMarketExplanation || "Connecting to global and local market data feeds... Analyzing trends for you."}
                             </p>
                           </div>
@@ -985,10 +1055,10 @@ export default function DashboardPage() {
                     <div className="market-grid">
                        {comprehensiveAdvice?.market.map((m, i) => (
                          <div key={i} className="card-premium market-card">
-                            <div className="flex justify-between items-start mb-4">
+                            <div className="flex justify-between items-start" style={{marginBottom:"var(--space-md)"}}>
                                <div>
                                  <div style={{fontSize:"0.75rem", fontWeight:800, color:"var(--text-muted)", letterSpacing:"0.05em"}}>{m.type}</div>
-                                 <h4 className="brand-font" style={{fontSize:"1.1rem", margin:"0.25rem 0"}}>{m.name}</h4>
+                                 <h4 className="brand-font" style={{fontSize:"1.1rem", margin:"var(--space-xs) 0"}}>{m.name}</h4>
                                  <div style={{fontFamily:"monospace", fontSize:"0.8rem", color:"var(--primary)"}}>{m.symbol}</div>
                                </div>
                                <div className={`market-trend ${m.trend.toLowerCase().replace(' ','-')}`}>{m.trend}</div>
@@ -1012,8 +1082,8 @@ export default function DashboardPage() {
                   <div className="animate-up">
                     <div className="grid-2-1">
                        <div className="card-premium">
-                          <h3 className="brand-font mb-6">Financial Profile & Risk</h3>
-                          <form onSubmit={handleUpdateProfile} className="flex flex-col gap-6">
+                          <h3 className="brand-font" style={{marginBottom:"var(--space-lg)"}}>Financial Profile & Risk</h3>
+                          <form onSubmit={handleUpdateProfile} className="flex flex-col" style={{gap:"var(--space-xl)"}}>
                              <div className="form-group">
                                <label className="form-label">Monthly Target Income (ZWG)</label>
                                <input className="input-premium" type="number" value={userProfile?.monthly_income_target || 0} onChange={e => setUserProfile(p => p ? {...p, monthly_income_target: parseFloat(e.target.value)} : null)} />
@@ -1057,18 +1127,18 @@ export default function DashboardPage() {
                        </div>
 
                        <div className="card-premium">
-                          <h3 className="brand-font mb-6">Goal Progress</h3>
-                          <div className="flex flex-col gap-8">
+                          <h3 className="brand-font" style={{marginBottom:"var(--space-lg)"}}>Goal Progress</h3>
+                          <div className="flex flex-col" style={{gap:"var(--space-xl)"}}>
                              {comprehensiveAdvice?.goals.map((g, i) => (
                                <div key={i}>
-                                  <div className="flex justify-between mb-3">
+                                  <div className="flex justify-between" style={{marginBottom:"var(--space-sm)"}}>
                                      <span style={{fontWeight:800}}>{g.name}</span>
                                      <span style={{color:"var(--primary)", fontWeight:800}}>{g.percent}%</span>
                                   </div>
                                   <div className="progress-bar-bg" style={{height:12}}>
                                      <div className="progress-bar-fill" style={{width: `${g.percent}%`, background:"var(--success)"}}></div>
                                   </div>
-                                  <div className="flex justify-between mt-2" style={{fontSize:"0.8rem", color:"var(--text-muted)"}}>
+                                  <div className="flex justify-between" style={{marginTop:"var(--space-xs)", fontSize:"0.8rem", color:"var(--text-muted)"}}>
                                      <span>Current: ${g.current.toLocaleString()}</span>
                                      <span>Target: ${g.target.toLocaleString()}</span>
                                   </div>
@@ -1089,7 +1159,7 @@ export default function DashboardPage() {
               <div className="animate-up">
                 <h2 className="section-title">Send Funds</h2>
                 <div className="card-premium">
-                  <form onSubmit={handleTransfer} style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+                  <form onSubmit={handleTransfer} className="flex flex-col" style={{ gap: "var(--space-lg)" }}>
                     <div className="form-group">
                       <label className="form-label">SOURCE ACCOUNT</label>
                       <select className="input-premium" value={sourceAccountId} onChange={(e) => setSourceAccountId(e.target.value)} required>
@@ -1100,7 +1170,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="form-group">
                       <label className="form-label">DESTINATION ACCOUNT</label>
-                      <div className="flex gap-4 mobile-stack">
+                      <div className="flex mobile-stack" style={{gap:"var(--space-md)"}}>
                         <input className="input-premium" style={{ flex: 1 }} type="text" placeholder="Enter account number" value={destAccount} onChange={(e) => setDestAccount(e.target.value)} required />
                         {beneficiaries.length > 0 && (
                           <select className="input-premium" style={{ width: "220px" }} onChange={(e) => {
@@ -1114,7 +1184,7 @@ export default function DashboardPage() {
                         )}
                       </div>
                     </div>
-                    <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"1.5rem"}} className="mobile-stack">
+                    <div className="mobile-stack" style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"var(--space-lg)"}}>
                       <div className="form-group">
                         <label className="form-label">AMOUNT</label>
                         <input className="input-premium" type="number" step="0.01" placeholder="0.00" value={amount} onChange={(e) => setAmount(e.target.value)} required />
@@ -1133,7 +1203,7 @@ export default function DashboardPage() {
             {activeTab === "History" && (
               <div className="animate-up">
                 <h2 className="section-title">Transaction History</h2>
-                <div className="flex gap-4 mb-4 items-center mobile-stack">
+                <div className="flex items-center mobile-stack" style={{gap:"var(--space-md)", marginBottom:"var(--space-md)"}}>
                   <div style={{flex:1}}>
                     <label className="form-label">SELECT ACCOUNT</label>
                     <select value={sourceAccountId} onChange={(e) => { setSourceAccountId(e.target.value); fetchTransactions(parseInt(e.target.value)); }} className="input-premium">
@@ -1142,20 +1212,20 @@ export default function DashboardPage() {
                       ))}
                     </select>
                   </div>
-                  <div className="flex gap-2" style={{alignSelf:"flex-end"}}>
+                  <div className="flex" style={{gap:"var(--space-xs)", alignSelf:"flex-end"}}>
                     <a
                       href={`${API_BASE_URL}/api/accounts/statement?account_id=${sourceAccountId}`}
                       download
                       className="btn-premium"
-                      style={{background:"var(--success)"}}
+                      style={{background:"var(--success)", display:"flex", alignItems:"center", gap:"var(--space-xs)"}}
                     >
-                      ⬇️ Statement
+                      <IconDownload size={16} color="white" /> Statement
                     </a>
                     <button className="btn-premium" style={{ background: "var(--bg-color)", color: "var(--text-main)", border: "1px solid var(--border-color)" }} onClick={() => setActiveTab("Home")}>Back</button>
                   </div>
                 </div>
                 <div className="card-premium" style={{padding:0, overflow:"hidden"}}>
-                  {transactions.length === 0 ? <p style={{ padding: "2rem", color: "var(--text-muted)", textAlign:"center" }}>No transactions found for this account.</p> : (
+                  {transactions.length === 0 ? <p style={{ padding: "var(--space-xl)", color: "var(--text-muted)", textAlign:"center" }}>No transactions found for this account.</p> : (
                     <table className="table-premium">
                       <thead>
                         <tr>
@@ -1191,18 +1261,18 @@ export default function DashboardPage() {
 
             {activeTab === "Bulk Payment" && (
               <div className="animate-up">
-                <div className="flex justify-between items-center mb-4">
+                <div className="flex justify-between items-center" style={{marginBottom:"var(--space-md)"}}>
                   <h2 className="section-title" style={{ marginBottom: 0 }}>Bulk Multi-Transfer</h2>
-                  <div className="flex gap-2">
-                    <button className="btn-premium" style={{ background: "var(--bg-color)", color: "var(--text-main)", border: "1px solid var(--border-color)" }} onClick={addBulkRow}>+ Add Row</button>
-                    <label className="btn-premium" style={{ background: "var(--accent)", color: "#0a1f44", cursor: "pointer" }}>
-                      📥 Import CSV <input type="file" accept=".csv" onChange={handleCSVUpload} style={{ display: "none" }} />
+                  <div className="flex" style={{gap:"var(--space-xs)"}}>
+                    <button className="btn-premium" style={{ background: "var(--bg-color)", color: "var(--text-main)", border: "1px solid var(--border-color)", display:"flex", alignItems:"center", gap:"var(--space-xs)" }} onClick={addBulkRow}><IconPlus size={16} /> Add Row</button>
+                    <label className="btn-premium" style={{ background: "var(--accent)", color: "#0a1f44", cursor: "pointer", display:"flex", alignItems:"center", gap:"var(--space-xs)" }}>
+                      <IconImport size={16} /> Import CSV <input type="file" accept=".csv" onChange={handleCSVUpload} style={{ display: "none" }} />
                     </label>
                   </div>
                 </div>
 
-                <div className="card-premium mb-4">
-                  <div className="mb-4">
+                <div className="card-premium" style={{marginBottom:"var(--space-md)"}}>
+                  <div style={{marginBottom:"var(--space-md)"}}>
                     <label className="form-label">SELECT FUNDING ACCOUNT</label>
                     <select className="input-premium" value={bulkSourceAccountId} onChange={(e) => setBulkSourceAccountId(e.target.value)}>
                       <option value="">Choose an account...</option>
@@ -1210,14 +1280,28 @@ export default function DashboardPage() {
                     </select>
                   </div>
 
-                  <div className="flex flex-col gap-4 mb-4">
+                  <div className="flex flex-col" style={{gap:"var(--space-md)", marginBottom:"var(--space-md)"}}>
                     {bulkRows.map((row, index) => (
-                      <div key={row.id} className="bulk-row-grid animate-up" style={{ background: "var(--bg-color)", border: "1px solid var(--border-color)", padding: "1.25rem", borderRadius: "16px", display:"grid", gridTemplateColumns:"30px 1fr 120px 1fr 40px", gap:"1rem", alignItems:"center" }}>
-                        <div style={{ fontSize: "0.8rem", color: "var(--text-muted)", fontWeight: 800 }}>#{index + 1}</div>
-                        <input className="input-premium" placeholder="Recipient Account" value={row.destination} onChange={(e) => updateBulkRow(row.id, "destination", e.target.value)} />
-                        <input className="input-premium" type="number" placeholder="Amount" value={row.amount} onChange={(e) => updateBulkRow(row.id, "amount", e.target.value)} />
-                        <input className="input-premium" placeholder="Reference" value={row.description} onChange={(e) => updateBulkRow(row.id, "description", e.target.value)} />
-                        <button onClick={() => removeBulkRow(row.id)} style={{ background: "none", border: "none", color: "var(--error)", cursor: "pointer", fontSize: "1.2rem", display:"flex", alignItems:"center", justifyContent:"center" }}>🗑️</button>
+                      <div key={row.id} className="bulk-row-grid animate-up">
+                        <div style={{ fontWeight:800, color:"var(--text-muted)", opacity:0.5 }}>{index + 1}</div>
+                        <div className="flex flex-col">
+                          <div className="form-label" style={{ fontSize:"0.65rem", marginBottom:"2px" }}>DESTINATION (PHONE/ACCOUNT)</div>
+                          <input className="input-field" value={row.destination} onChange={e => updateBulkRow(row.id, 'destination', e.target.value)} />
+                        </div>
+                        <div className="flex flex-col">
+                          <div className="form-label" style={{ fontSize:"0.65rem", marginBottom:"2px" }}>AMOUNT</div>
+                          <div style={{ position:"relative" }}>
+                            <span style={{ position:"absolute", left:"8px", top:"50%", transform:"translateY(-50%)", fontSize:"0.75rem", fontWeight:700, color:"var(--text-muted)" }}>ZWG</span>
+                            <input className="input-field" value={row.amount} onChange={e => updateBulkRow(row.id, 'amount', e.target.value)} style={{ paddingLeft: "40px" }} />
+                          </div>
+                        </div>
+                        <div className="flex flex-col">
+                          <div className="form-label" style={{ fontSize:"0.65rem", marginBottom:"2px" }}>DESCRIPTION / REFERENCE</div>
+                          <input className="input-field" value={row.description} onChange={e => updateBulkRow(row.id, 'description', e.target.value)} />
+                        </div>
+                        <button className="flex items-center justify-center" onClick={() => removeBulkRow(row.id)} style={{ background:"none", border:"none", color:"var(--error)", cursor:"pointer", opacity:0.7 }}>
+                          <IconTrash size={18} />
+                        </button>
                       </div>
                     ))}
                   </div>
@@ -1229,8 +1313,8 @@ export default function DashboardPage() {
                         {bulkSourceAcc?.currency === "USD" ? "$" : "ZWG "}{bulkTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                       </div>
                     </div>
-                    <button className="btn-premium" style={{ width: "240px", background: "white", color: "var(--primary)" }} onClick={handleBulkTransfer} disabled={bulkLoading || bulkRows.some(r => !r.destination || !r.amount)}>
-                      {bulkLoading ? "⏳ Processing..." : "🚀 Review & Execute"}
+                    <button className="btn-premium" style={{ width: "240px", background: "white", color: "var(--primary)", display:"flex", alignItems:"center", justifyContent:"center", gap:"var(--space-sm)" }} onClick={handleBulkTransfer} disabled={bulkLoading || bulkRows.some(r => !r.destination || !r.amount)}>
+                      {bulkLoading ? <><IconLoader size={18} /> Processing...</> : <><IconSparkles size={18} /> Review & Execute</>}
                     </button>
                   </div>
                 </div>
@@ -1260,28 +1344,32 @@ export default function DashboardPage() {
             {activeTab === "Manage" && (
               <div className="animate-up">
                 <h2 className="section-title">Account Management</h2>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem" }} className="mobile-stack">
+                <div className="dashboard-grid">
                   <div className="card-premium">
-                    <div className="text-center mb-4">
-                      <div style={{ width: "100px", height: "100px", background: "var(--primary)", borderRadius: "30px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.5rem", fontSize: "3rem", color: "white", boxShadow: "var(--shadow-lg)" }}>👤</div>
+                    <div className="text-center" style={{marginBottom:"var(--space-md)"}}>
+                      <div style={{ width: "100px", height: "100px", background: "var(--primary)", borderRadius: "var(--radius-lg)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto var(--space-lg)", color: "white", boxShadow: "var(--shadow-lg)" }}>
+                        <IconUser size={48} color="white" />
+                      </div>
                       <h3 className="brand-font" style={{ margin: 0, fontSize: "1.5rem" }}>{name}</h3>
                       <p className="mt-1" style={{ color: "var(--text-muted)", fontSize: "0.95rem" }}>Elite Private Banking</p>
                     </div>
-                    <div className="flex flex-col gap-4">
-                      <div style={{ padding: "1.25rem", background: "var(--bg-color)", borderRadius: "16px", border: "1px solid var(--border-color)" }}>
-                        <div className="form-label mb-2">PHONE NUMBER</div>
+                    <div className="flex flex-col" style={{gap:"var(--space-md)"}}>
+                      <div style={{ padding: "var(--space-md)", background: "var(--bg-color)", borderRadius: "var(--radius-md)", border: "1px solid var(--border-color)" }}>
+                        <div className="form-label" style={{marginBottom:"var(--space-xs)"}}>PHONE NUMBER</div>
                         <div style={{ fontWeight: 700 }}>{localStorage.getItem("user_id") === "2" ? "0771234567" : "0772123456"}</div>
                       </div>
-                      <div style={{ padding: "1.25rem", background: "var(--bg-color)", borderRadius: "16px", border: "1px solid var(--border-color)" }}>
-                        <div className="form-label mb-2">SECURITY STATUS</div>
-                        <div style={{ color: "var(--success)", fontWeight: 700 }}>✓ Multi-Factor Authentication Enabled</div>
+                      <div style={{ padding: "var(--space-md)", background: "var(--bg-color)", borderRadius: "var(--radius-md)", border: "1px solid var(--border-color)" }}>
+                        <div className="form-label" style={{marginBottom:"var(--space-xs)"}}>SECURITY STATUS</div>
+                        <div style={{ color: "var(--success)", fontWeight: 700, display:"flex", alignItems:"center", gap:"var(--space-xs)" }}>
+                          <IconCheckCircle size={16} color="var(--success)" /> Multi-Factor Authentication Enabled
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   <div className="card-premium">
-                    <h3 className="brand-font mb-4" style={{ fontSize: "1.25rem" }}>Security Controls</h3>
-                    <form className="flex flex-col gap-4" onSubmit={e => { e.preventDefault(); showToast("Security PIN updated!", "success"); }}>
+                    <h3 className="brand-font" style={{marginBottom:"var(--space-md)", fontSize: "1.25rem" }}>Security Controls</h3>
+                    <form className="flex flex-col" style={{gap:"var(--space-md)"}} onSubmit={e => { e.preventDefault(); showToast("Security PIN updated!", "success"); }}>
                       <div className="form-group">
                         <label className="form-label">CURRENT PIN</label>
                         <input className="input-premium" type="password" maxLength={6} placeholder="••••••" />
@@ -1294,7 +1382,6 @@ export default function DashboardPage() {
                     </form>
                   </div>
                 </div>
-
                 <div style={{ marginTop: "3rem" }}>
                   <h3 className="section-title" style={{ fontSize: "1.25rem" }}>Linked Services</h3>
                   <div className="card-premium" style={{ padding: 0 }}>
@@ -1316,7 +1403,7 @@ export default function DashboardPage() {
               <div className="animate-up">
                 <h2 className="section-title">Buy {activeTab} Airtime</h2>
                 <div className="card-premium">
-                  <form onSubmit={(e) => handleBuyAirtime(e, activeTab)} style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+                  <form onSubmit={(e) => handleBuyAirtime(e, activeTab)} className="flex flex-col" style={{ gap: "var(--space-lg)" }}>
                     <div className="form-group">
                       <label className="form-label">SOURCE ACCOUNT</label>
                       <select className="input-premium" value={sourceAccountId} onChange={(e) => setSourceAccountId(e.target.value)} required>
@@ -1325,7 +1412,7 @@ export default function DashboardPage() {
                         ))}
                       </select>
                     </div>
-                    <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"1.5rem"}} className="mobile-stack">
+                    <div className="mobile-stack" style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"var(--space-lg)"}}>
                       <div className="form-group">
                         <label className="form-label">PHONE NUMBER</label>
                         <input className="input-premium" type="text" placeholder="e.g. 0772123456" value={airtimePhone} onChange={(e) => setAirtimePhone(e.target.value)} required />
@@ -1345,12 +1432,12 @@ export default function DashboardPage() {
               <div className="animate-up">
                 <h2 className="section-title">Add Beneficiary</h2>
                 <div className="card-premium">
-                  <form onSubmit={handleAddBeneficiary} style={{display: "flex", flexDirection: "column", gap: "1.5rem"}}>
+                  <form onSubmit={handleAddBeneficiary} className="flex flex-col" style={{gap: "var(--space-lg)"}}>
                     <div className="form-group">
                       <label className="form-label">BENEFICIARY NAME</label>
                       <input className="input-premium" type="text" placeholder="Full name" value={benName} onChange={(e) => setBenName(e.target.value)} required />
                     </div>
-                    <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"1.5rem"}} className="mobile-stack">
+                    <div className="mobile-stack" style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:"var(--space-lg)"}}>
                       <div className="form-group">
                         <label className="form-label">ACCOUNT NUMBER</label>
                         <input className="input-premium" type="text" placeholder="Destination account" value={benAccount} onChange={(e) => setBenAccount(e.target.value)} required />
@@ -1376,7 +1463,7 @@ export default function DashboardPage() {
               <div className="animate-up">
                 <h2 className="section-title">Saved Beneficiaries</h2>
                 <div className="card-premium" style={{padding:0, overflow:"hidden"}}>
-                  {beneficiaries.length === 0 ? <p style={{padding:"2rem", color:"var(--text-muted)"}}>No beneficiaries found.</p> : (
+                  {beneficiaries.length === 0 ? <p style={{padding:"var(--space-xl)", color:"var(--text-muted)", textAlign:"center"}}>No beneficiaries found.</p> : (
                     <table className="table-premium">
                       <thead>
                         <tr>
@@ -1393,7 +1480,7 @@ export default function DashboardPage() {
                             <td style={{fontFamily:"monospace", color:"var(--text-muted)"}}>{ben.account_number}</td>
                             <td><span className="badge badge-primary">{ben.bank_name}</span></td>
                             <td style={{textAlign:"right"}}>
-                              <button className="btn-premium" style={{padding:"0.5rem 1rem", fontSize:"0.8rem"}} onClick={() => {
+                              <button className="btn-premium" style={{padding:"var(--space-xs) var(--space-md)", fontSize:"0.8rem"}} onClick={() => {
                                 setDestAccount(ben.account_number);
                                 setActiveTab("Transfer");
                               }}>Send Funds</button>
@@ -1536,7 +1623,7 @@ export default function DashboardPage() {
             )}
           </div>
 
-          <div className="dashboard-right">
+          <div className="dashboard-right flex flex-col gap-6">
             <div className="card-premium" style={{ borderRadius: "12px", padding: "1.5rem", boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }}>
               <div className="form-label mb-4" style={{ fontSize: "0.7rem", opacity: 0.8 }}>SPENDING OVERVIEW</div>
               <div style={{ position: "relative", width: "150px", height: "150px", margin: "0 auto 1.5rem" }}>

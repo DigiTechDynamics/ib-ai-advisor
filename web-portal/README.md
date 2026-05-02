@@ -1,4 +1,17 @@
+# IB AI Advisor
+
+**IB AI Advisor** is a next-generation, AI-integrated financial platform that transforms traditional banking into a smart, proactive experience. It combines robust banking operations—like bulk payments and transfers—with a deep intelligence layer powered by Google's Gemini to provide real-time spending insights, anomaly detection, and interactive investment simulations.
+
+---
+
+### 🚀 Developed by **Digital Tech Dynamics (Team DTD)**
+- **Website**: [www.digitaltechdynamics.com](http://www.digitaltechdynamics.com)
+- **Connect with us**: [Facebook](https://facebook.com/DigitalTechDynamics) | [Instagram](https://instagram.com/DigitalTechDynamics) | [LinkedIn](https://linkedin.com/company/digital-tech-dynamics)
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
 
 ## Getting Started
 
@@ -16,9 +29,26 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Backend Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The system requires a FastAPI backend to handle banking logic and AI insights.
+
+1. **Navigate to the backend directory**:
+   ```bash
+   cd ../backend-api
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run the server**:
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+The API will be available at [http://localhost:8000](http://localhost:8000).
 
 ## Learn More
 
